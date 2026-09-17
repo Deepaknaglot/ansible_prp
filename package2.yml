@@ -1,0 +1,13 @@
+---
+ - name: This is for the patching of the suse linux machine
+   hosts: all
+   gather_facts: no
+   tasks:
+        - name: patching the suse linux machine
+          zypper:
+            name: patch
+            state: latest
+        - name: reboot the suse linux machine
+          reboot:
+            reboot_timeout: 600
+            
