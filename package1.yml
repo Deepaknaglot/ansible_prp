@@ -1,0 +1,22 @@
+---
+  - name: This is first yaml playbook creating for practise purpose
+    hosts: all
+    tasks:
+      - name: Installation of the autofs package
+        ansible.builtin.dnf:
+          name: autofs
+          state: present
+      - name: Installation of the httpd package
+        ansible.builtin.dnf:
+          name: httpd
+          state: present
+      - name: enable and start service on mentioned hosts
+        ansible.builtin.systemd_service:
+          name: httpd
+          enabled: true
+          state: started
+      - name: enable and start autofs service on the mentioned hosts
+        ansible.builtin.systemd_service:
+          name: autofs
+          enabled: true
+          state: started
