@@ -1,0 +1,15 @@
+---
+  - name: showing handlers
+    hosts: all
+    tasks:
+      - name: copy a file
+        ansible.builtin.copy:
+          src: /tmp/index.html
+          dest: /var/www/html/index.html
+        notify:
+          - restart_web
+    handlers:
+      - name: restart_web
+        service:
+          name: httpd
+          state: restarted

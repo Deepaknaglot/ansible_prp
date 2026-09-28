@@ -1,0 +1,12 @@
+---
+- name: showing demo for the loop
+  hosts: all
+  become: true
+  tasks:
+    - name: let have some loop demo
+      ansible.builtin.debug:
+        msg: restart "{{ item }}" service
+      loop:
+        - sftpd
+        - httpd
+        - httpd

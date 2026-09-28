@@ -1,0 +1,10 @@
+---
+  - name: newplaybook
+    hosts: node2
+    gather_facts: false
+    become: true
+    tasks:
+      - name: testing purpose
+        ansible.builtin.dnf:
+          name: httpd
+          state: present

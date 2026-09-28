@@ -1,0 +1,333 @@
+{
+    "plays": [
+        {
+            "___progress": "50%",
+            "__changed": 0,
+            "__failed": 0,
+            "__ignored": 0,
+            "__in progress": 1,
+            "__ok": 0,
+            "__percent_complete": 50,
+            "__play_name": "error demo",
+            "__progress": "▇▇▇▇    ",
+            "__skipped": 0,
+            "__task_count": 2,
+            "__unreachable": 1,
+            "name": "error demo",
+            "pattern": "all",
+            "play": "error demo",
+            "play_pattern": "all",
+            "play_uuid": "ee1282a9-fb37-6109-2177-000000000003",
+            "playbook": "/workspaces/Ansible/error.yml",
+            "playbook_uuid": "89a51c7f-0dff-43e1-8490-dec2049a3648",
+            "tasks": [
+                {
+                    "__changed": false,
+                    "__duration": "3s",
+                    "__host": "node2",
+                    "__number": 0,
+                    "__result": "Ignored",
+                    "__task": "copy a file",
+                    "__task_action": "copy",
+                    "duration": 2.702134,
+                    "end": "2026-09-20T15:40:08.357016+00:00",
+                    "event_loop": null,
+                    "host": "node2",
+                    "ignore_errors": true,
+                    "play": "error demo",
+                    "play_pattern": "all",
+                    "play_uuid": "ee1282a9-fb37-6109-2177-000000000003",
+                    "playbook": "/workspaces/Ansible/error.yml",
+                    "playbook_uuid": "89a51c7f-0dff-43e1-8490-dec2049a3648",
+                    "remote_addr": "node2",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "changed": false,
+                        "exception": "Traceback (most recent call last):\n  File \"/usr/lib/python3.12/site-packages/ansible/plugins/action/copy.py\", line 466, in run\n    source = self._find_needle('files', source)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/site-packages/ansible/plugins/action/__init__.py\", line 1429, in _find_needle\n    return self._loader.path_dwim_relative_stack(path_stack, dirname, needle)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/site-packages/ansible/parsing/dataloader.py\", line 340, in path_dwim_relative_stack\n    raise AnsibleFileNotFound(file_name=source, paths=[to_native(p) for p in search])\nansible.errors.AnsibleFileNotFound: Could not find or access '/tmp/hello' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option\n",
+                        "invocation": {
+                            "dest": "/tmp/",
+                            "module_args": {
+                                "dest": "/tmp/",
+                                "src": "/tmp/hello"
+                            },
+                            "src": "/tmp/hello"
+                        },
+                        "msg": "Could not find or access '/tmp/hello' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"
+                    },
+                    "resolved_action": "ansible.builtin.copy",
+                    "start": "2026-09-20T15:40:05.654882+00:00",
+                    "task": "copy a file",
+                    "task_action": "copy",
+                    "task_args": "",
+                    "task_path": "/workspaces/Ansible/error.yml:7",
+                    "task_uuid": "ee1282a9-fb37-6109-2177-000000000005",
+                    "uuid": "a26bac7b-719d-4ab4-aa53-c6ea9d5662d6"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "localhost",
+                    "__number": 1,
+                    "__result": "Unreachable",
+                    "__task": "copy a file",
+                    "__task_action": "copy",
+                    "duration": 0.261636,
+                    "end": "2026-09-20T15:40:05.968915+00:00",
+                    "host": "localhost",
+                    "play": "error demo",
+                    "play_pattern": "all",
+                    "play_uuid": "ee1282a9-fb37-6109-2177-000000000003",
+                    "playbook": "/workspaces/Ansible/error.yml",
+                    "playbook_uuid": "89a51c7f-0dff-43e1-8490-dec2049a3648",
+                    "remote_addr": "localhost",
+                    "res": {
+                        "changed": false,
+                        "msg": "Failed to connect to the host via ssh: ssh: connect to host localhost port 22: Connection refused",
+                        "unreachable": true
+                    },
+                    "resolved_action": "ansible.builtin.copy",
+                    "start": "2026-09-20T15:40:05.707279+00:00",
+                    "task": "copy a file",
+                    "task_action": "copy",
+                    "task_args": "",
+                    "task_path": "/workspaces/Ansible/error.yml:7",
+                    "task_uuid": "ee1282a9-fb37-6109-2177-000000000005",
+                    "uuid": "c8f4cc4f-934a-4323-b2c7-cc51a743e3a6"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "node2",
+                    "__number": 2,
+                    "__result": "Ok",
+                    "__task": "showing syntax error",
+                    "__task_action": "debug",
+                    "duration": 0.092978,
+                    "end": "2026-09-20T15:40:08.513407+00:00",
+                    "event_loop": null,
+                    "host": "node2",
+                    "play": "error demo",
+                    "play_pattern": "all",
+                    "play_uuid": "ee1282a9-fb37-6109-2177-000000000003",
+                    "playbook": "/workspaces/Ansible/error.yml",
+                    "playbook_uuid": "89a51c7f-0dff-43e1-8490-dec2049a3648",
+                    "remote_addr": "node2",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "_ansible_verbose_always": true,
+                        "changed": false,
+                        "msg": "this is syntax error"
+                    },
+                    "resolved_action": "ansible.builtin.debug",
+                    "start": "2026-09-20T15:40:08.420429+00:00",
+                    "task": "showing syntax error",
+                    "task_action": "debug",
+                    "task_args": "",
+                    "task_path": "/workspaces/Ansible/error.yml:11",
+                    "task_uuid": "ee1282a9-fb37-6109-2177-000000000006",
+                    "uuid": "11f1185f-9922-43f2-a47c-f6672a87a74e"
+                },
+                {
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__host": "node2",
+                    "__number": 3,
+                    "__result": "Ok",
+                    "__task": "running this",
+                    "__task_action": "debug",
+                    "duration": 0.135281,
+                    "end": "2026-09-20T15:40:08.675496+00:00",
+                    "event_loop": null,
+                    "host": "node2",
+                    "play": "error demo",
+                    "play_pattern": "all",
+                    "play_uuid": "ee1282a9-fb37-6109-2177-000000000003",
+                    "playbook": "/workspaces/Ansible/error.yml",
+                    "playbook_uuid": "89a51c7f-0dff-43e1-8490-dec2049a3648",
+                    "remote_addr": "node2",
+                    "res": {
+                        "_ansible_no_log": false,
+                        "_ansible_verbose_always": true,
+                        "changed": false,
+                        "msg": "running this"
+                    },
+                    "resolved_action": "ansible.builtin.debug",
+                    "start": "2026-09-20T15:40:08.540215+00:00",
+                    "task": "running this",
+                    "task_action": "debug",
+                    "task_args": "",
+                    "task_path": "/workspaces/Ansible/error.yml:14",
+                    "task_uuid": "ee1282a9-fb37-6109-2177-000000000007",
+                    "uuid": "100a4ec8-1baf-41eb-8eec-1c3f12386d0c"
+                }
+            ],
+            "uuid": "ee1282a9-fb37-6109-2177-000000000003"
+        }
+    ],
+    "settings_entries": {
+        "ansible-navigator": {
+            "ansible": {
+                "config": {
+                    "help": false
+                },
+                "doc": {
+                    "help": false,
+                    "plugin": {
+                        "type": "module"
+                    }
+                },
+                "inventory": {
+                    "entries": [
+                        "/workspaces/Ansible/inventory"
+                    ],
+                    "help": false
+                },
+                "playbook": {
+                    "help": false,
+                    "path": "/workspaces/Ansible/error.yml"
+                }
+            },
+            "ansible-builder": {
+                "help": false,
+                "workdir": "/workspaces/Ansible"
+            },
+            "ansible-runner": {
+                "job-events": false
+            },
+            "app": "run",
+            "collection-doc-cache-path": "/root/.cache/ansible-navigator/collection_doc_cache.db",
+            "color": {
+                "enable": true,
+                "osc4": true
+            },
+            "editor": {
+                "command": "vi +{line_number} {filename}",
+                "console": true
+            },
+            "enable-prompts": false,
+            "exec": {
+                "command": "/bin/bash",
+                "shell": true
+            },
+            "execution-environment": {
+                "container-engine": "podman",
+                "enabled": true,
+                "image": "registry.redhat.io/ansible-automation-platform-25/ee-supported-rhel8:latest",
+                "pull": {
+                    "policy": "tag"
+                }
+            },
+            "format": "yaml",
+            "images": {
+                "details": [
+                    "everything"
+                ]
+            },
+            "logging": {
+                "append": true,
+                "file": "/workspaces/Ansible/ansible-navigator.log",
+                "level": "warning"
+            },
+            "mode": "interactive",
+            "playbook-artifact": {
+                "enable": true,
+                "save-as": "{playbook_dir}/{playbook_name}-artifact-{time_stamp}.json"
+            },
+            "settings": {
+                "effective": false,
+                "sample": false,
+                "schema": "json",
+                "sources": false
+            },
+            "time-zone": "UTC"
+        }
+    },
+    "settings_sources": {
+        "ansible-navigator.ansible-builder.help": "Defaults",
+        "ansible-navigator.ansible-builder.workdir": "Defaults",
+        "ansible-navigator.ansible-lint.config": "Not set",
+        "ansible-navigator.ansible-lint.lintables": "Not set",
+        "ansible-navigator.ansible-runner.artifact-dir": "Not set",
+        "ansible-navigator.ansible-runner.job-events": "Defaults",
+        "ansible-navigator.ansible-runner.rotate-artifacts-count": "Not set",
+        "ansible-navigator.ansible-runner.timeout": "Not set",
+        "ansible-navigator.ansible.cmdline": "Not set",
+        "ansible-navigator.ansible.config.help": "Defaults",
+        "ansible-navigator.ansible.config.path": "Not set",
+        "ansible-navigator.ansible.doc.help": "Defaults",
+        "ansible-navigator.ansible.doc.plugin.name": "Not set",
+        "ansible-navigator.ansible.doc.plugin.type": "Defaults",
+        "ansible-navigator.ansible.inventory.entries": "Ansible configuration file",
+        "ansible-navigator.ansible.inventory.help": "Defaults",
+        "ansible-navigator.ansible.playbook.help": "Defaults",
+        "ansible-navigator.ansible.playbook.path": "Previous cli command",
+        "ansible-navigator.app": "Command line",
+        "ansible-navigator.collection-doc-cache-path": "Defaults",
+        "ansible-navigator.color.enable": "Defaults",
+        "ansible-navigator.color.osc4": "Defaults",
+        "ansible-navigator.editor.command": "Defaults",
+        "ansible-navigator.editor.console": "Defaults",
+        "ansible-navigator.enable-prompts": "Defaults",
+        "ansible-navigator.exec.command": "Defaults",
+        "ansible-navigator.exec.shell": "Defaults",
+        "ansible-navigator.execution-environment.container-engine": "Automatically determined",
+        "ansible-navigator.execution-environment.container-options": "Not set",
+        "ansible-navigator.execution-environment.enabled": "Defaults",
+        "ansible-navigator.execution-environment.environment-variables.pass": "Not set",
+        "ansible-navigator.execution-environment.environment-variables.set": "Not set",
+        "ansible-navigator.execution-environment.image": "Defaults",
+        "ansible-navigator.execution-environment.pull.arguments": "Not set",
+        "ansible-navigator.execution-environment.pull.policy": "Defaults",
+        "ansible-navigator.execution-environment.volume-mounts": "Not set",
+        "ansible-navigator.format": "Defaults",
+        "ansible-navigator.images.details": "Defaults",
+        "ansible-navigator.inventory-columns": "Not set",
+        "ansible-navigator.logging.append": "Defaults",
+        "ansible-navigator.logging.file": "Defaults",
+        "ansible-navigator.logging.level": "Defaults",
+        "ansible-navigator.mode": "Defaults",
+        "ansible-navigator.playbook-artifact.enable": "Defaults",
+        "ansible-navigator.playbook-artifact.replay": "Not set",
+        "ansible-navigator.playbook-artifact.save-as": "Defaults",
+        "ansible-navigator.settings.effective": "Defaults",
+        "ansible-navigator.settings.sample": "Defaults",
+        "ansible-navigator.settings.schema": "Defaults",
+        "ansible-navigator.settings.sources": "Defaults",
+        "ansible-navigator.time-zone": "Defaults",
+        "settings_file_path": "None",
+        "settings_file_source": "None"
+    },
+    "status": "failed",
+    "status_color": 9,
+    "stdout": [
+        "/usr/lib64/python3.12/site-packages/cryptography/hazmat/backends/openssl/backend.py:8: CryptographyDeprecationWarning: You are using OpenSSL < 3.0. Support for OpenSSL < 3.0 is deprecated and will be removed in the next release. Please upgrade to OpenSSL 3.0 or later.",
+        "  from cryptography.hazmat.bindings.openssl import binding",
+        "/usr/local/lib/python3.12/site-packages/paramiko/pkey.py:82: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.",
+        "  \"cipher\": algorithms.TripleDES,",
+        "/usr/local/lib/python3.12/site-packages/paramiko/transport.py:243: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.",
+        "  \"class\": algorithms.TripleDES,",
+        "",
+        "PLAY [error demo] **************************************************************",
+        "",
+        "TASK [copy a file] *************************************************************",
+        "\u001b[1;31mfatal: [localhost]: UNREACHABLE! => {\"changed\": false, \"msg\": \"Failed to connect to the host via ssh: ssh: connect to host localhost port 22: Connection refused\", \"unreachable\": true}\u001b[0m",
+        "\u001b[0;31mAn exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option\u001b[0m",
+        "\u001b[0;31mfatal: [node2]: FAILED! => {\"changed\": false, \"msg\": \"Could not find or access '/tmp/hello' on the Ansible Controller.\\nIf you are using a module and expect the file to exist on the remote, see the remote_src option\"}\u001b[0m",
+        "\u001b[0;36m...ignoring\u001b[0m",
+        "",
+        "TASK [showing syntax error] ****************************************************",
+        "\u001b[0;32mok: [node2] => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"this is syntax error\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "",
+        "TASK [running this] ************************************************************",
+        "\u001b[0;32mok: [node2] => {\u001b[0m",
+        "\u001b[0;32m    \"msg\": \"running this\"\u001b[0m",
+        "\u001b[0;32m}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;31mlocalhost\u001b[0m                  : ok=0    changed=0    \u001b[1;31munreachable=1   \u001b[0m failed=0    skipped=0    rescued=0    ignored=0   ",
+        "\u001b[0;32mnode2\u001b[0m                      : \u001b[0;32mok=3   \u001b[0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    \u001b[1;35mignored=1   \u001b[0m"
+    ],
+    "version": "2.0.0"
+}

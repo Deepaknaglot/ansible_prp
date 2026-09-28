@@ -1,0 +1,29 @@
+---
+- name: installing autofs as per distribution using ditor version
+  hosts: dev
+  become: true
+  tasks:
+    - name: installing autofs  on the ubuntu machine
+      ansible.builtin.package:
+         name: "{{ webpackage }}"
+         state: present
+    - name: starting {{ webpackage }}
+      ansible.builtin.service:
+         name: "{{ webservice }}"
+         state: started
+         enabled: yes
+        
+- name: Installing httpd on the red hat machines
+  hosts: prod
+  become: true
+  tasks:
+    - name: installing httpd on the red hat machine
+      ansible.builtin.package:
+        name: "{{ webpackage }}"
+        state: present
+    - name: starting the service
+      ansible.builtin.service:
+        name: "{{ webservice }}"
+        state: started
+        enabled: yes
+

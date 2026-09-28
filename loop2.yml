@@ -1,0 +1,11 @@
+---
+- name: loop demo second
+  hosts: node2
+  become: true
+  vars_files:
+    - loopvar
+  tasks:
+    - name: printing my friends name
+      ansible.builtin.debug:
+        msg: my friends are "{{ item }}"
+      loop: "{{ myitem }}"

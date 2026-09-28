@@ -1,0 +1,11 @@
+---
+  - name: demo register
+    hosts: all
+    tasks:
+      - name: demo register
+        ansible.builtin.command: date
+        register: thisdate
+      - name: printing var value using debug module
+        ansible.builtin.debug:
+          var: thisdate
+

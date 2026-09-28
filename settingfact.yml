@@ -1,0 +1,19 @@
+---
+- name: set_fact demo
+  hosts: all
+  become: true
+  tasks:
+    - name: Setting host facts using complex arguments
+      ansible.builtin.set_fact:
+        myfirstfact: saturday
+        mysecondfact: evening
+    - ansible.builtin.debug:
+        msg: Recording this on {{ myfirstfact }} {{ mysecondfact }}
+
+- name: second play
+  hosts: all
+  become: true
+  tasks:
+    - name: second play
+      ansible.builtin.debug:
+        msg: It is still {{ myfirstfact }} {{ mysecondfact }}

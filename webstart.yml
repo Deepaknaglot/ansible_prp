@@ -1,0 +1,11 @@
+---
+  - name: strating and enabling service httpd on node2
+    hosts: node2
+    become: true
+    gather_facts: false
+    tasks:
+      - name: enabling httpd service
+        ansible.builtin.service:
+          name: httpd
+          state: started
+          enabled: true 

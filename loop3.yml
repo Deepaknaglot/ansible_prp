@@ -1,0 +1,11 @@
+---
+- name: loop demo second
+  hosts: all
+  become: true
+  vars_files:
+    - uservar
+  tasks:
+    - name: create below user
+      ansible.builtin.user:
+        name: "{{ item.name }}  with {{ item.groups }}
+      loop: "{{ myuser }}"

@@ -1,0 +1,18 @@
+---
+  - name: handlers demo
+    hosts: all
+    become: true
+    vars:
+      package: httpd 
+    tasks:
+      - name: install and show demo of handlers using httpd service
+        ansible.builtin.dnf:
+          name: "{{ package }}"
+          state: present
+        notify:
+          - enable_web
+      - name: enable_web
+        ansible.builtin.service:
+          name: "{{ package }}"
+          state: started
+          enabled: yes

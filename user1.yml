@@ -1,0 +1,10 @@
+---
+  - name: creating users on all the nodes
+    hosts: all
+    gather_facts: false
+    become: true
+    tasks:
+      - name: create user u1 on the nodes
+        ansible.builtin.user:
+          name: u2
+          state: present

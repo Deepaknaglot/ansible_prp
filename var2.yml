@@ -1,0 +1,10 @@
+---
+  - name: playing with variable
+    hosts: all
+    gather_facts: no
+    tasks:
+      - name: creating {{ myuser }}
+        ansible.builtin.user:
+          name: "{{ myuser }}"
+          shell: /bin/bash
+

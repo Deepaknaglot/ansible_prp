@@ -1,0 +1,12 @@
+- name: Using dict2items
+  ansible.builtin.debug:
+    msg: "{{ item.key }}: {{ item.value.ip_address }} {{ item.value.role }}"
+  loop: "{{ server_configs | dict2items }}"
+  vars:
+    server_configs:
+      web_01:
+        ip_address: "10.1.1.50"
+        role: "frontend"
+      db_01:
+        ip_address: "10.1.1.100"
+        role: "backend_db"

@@ -1,0 +1,9 @@
+---
+  - name: testing ip address show facts
+    hosts: all
+    become: true 
+    tasks:
+      - name: show IP address
+        ansible.builtin.debug:
+          msg: >
+            This host uses IP address {{ ansible_all_ipv4_addresses }}

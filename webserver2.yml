@@ -1,0 +1,36 @@
+---
+  - name: creating a new web server where i will add firewalld rules as well
+    hosts: node2
+    gather_facts: no
+    ignore_errors: true
+    tasks:
+      - name: Installation of the httpd packages
+        ansible.builtin.dnf:
+          name: httpd
+          state: present
+      - name: Installing firewalld service 
+        ansible.builtin.dnf:
+          name: firewalld
+          state: present
+      - name: enabling and starting the web server service on hosts
+        ansible.builtin.service:
+          name: httpd
+          state: started
+          enabled: yes
+      - name: enableing and starting firewalld service
+        ansible.builtin.service:
+          name: firewalld
+          state: started
+          enabled: true
+      - name: enable firewalld port for httpd
+        ansible.builtin.firewalld:
+          service: http
+          state: enabled
+          permanent: true
+          immediate: true
+      - name: creating and adding content in the index file of the httpd
+        ansible.builtin.copy:
+          content: 'This is my first web server where I am enabling firewalld with port'
+          dest: /var/www/html/index.html
+        
+      

@@ -1,0 +1,24 @@
+---
+  - name: set up a web server
+    hosts: dev
+    force_handlers: true
+    tasks:
+      - name: install httpd
+        ansible.builtin.dnf:
+          name: httpd
+          state: latest
+      - name: copy index.html
+        ansible.builtin.copy:
+          src: /tmp/index.html
+          dest: /var/www/html/index.html
+        notify:
+          - restart_web
+      - name: copy nothing - intended to fail
+        ansible.builtin.copy:
+          src: /tmp/nothing
+          dest: /var/www/html/nothing.html
+    handlers:
+      - name: restart_web
+        ansible.builtin.service:
+          name: httpd
+          state: restarted

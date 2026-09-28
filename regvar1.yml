@@ -1,0 +1,14 @@
+---
+  - name: register demo
+    hosts: all
+    become: true
+    tasks:
+      - name: store the value of the 'ls -lrt /' in the register magic variable
+        ansible.builtin.command: df -Th -x tmpfs -x devtmpfs
+        register: data
+      - name: storing the value of register in a variable
+        ansible.builtin.debug:
+          var: data
+      - name: printing the value of the data using debug module
+        ansible.builtin.debug:
+          msg: "{{ data.stdout }}"

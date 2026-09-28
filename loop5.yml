@@ -1,0 +1,14 @@
+---
+- name: loop demo
+  hosts: prod
+  tasks:
+    
+    - name: Register loop output as a variable
+      ansible.builtin.shell: "echo {{ item }}"
+      loop:
+        - "one"
+        - "two"
+      register: echo
+    - name: printing value of the echo
+      ansible.builtin.debug:
+        msg: "{{ echo.results }}"

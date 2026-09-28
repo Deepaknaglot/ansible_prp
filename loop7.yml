@@ -1,0 +1,22 @@
+---
+- name: loop demo 
+  hosts: all
+  gather_facts: false
+  vars:
+    users:
+      - user: sachin
+        group: wheel
+        shell: /bin/bash
+      - user: ram
+        group: users
+        shell: /bin/bash
+      - user: sham
+        group: wheel
+        shell: /bin/bash
+  tasks:
+    - name: creating different users on different remote nodes
+      ansible.builtin.user:
+         name: "{{ item.user }}"
+         group: "{{ item.group }}"
+         shell: "{{ item.shell }}"
+      loop: "{{ users }}"

@@ -1,0 +1,12 @@
+---
+- name: when demo first
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: confirm which OS distroes is this and then run whatever uptime command is there
+      ansible.builtin.command: uptime
+      register: mytime
+      when: ansible_facts['os_family'] == "RedHat"
+    - name: show the time of each server
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} server uptime is {{ mytime }}"

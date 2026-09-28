@@ -1,0 +1,8 @@
+---
+  - name: to gather facts
+    hosts: all
+    become: true
+    tasks:
+      - name: to gather facts
+        ansible.builtin.debug:
+          var: ansible_facts

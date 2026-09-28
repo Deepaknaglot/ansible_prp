@@ -1,0 +1,8 @@
+---
+- name: test command result
+  hosts: dev
+  tasks:
+    - name: check a fact
+      ansible.builtin.debug:
+        msg: echo today is 26
+      when: '"25" in ansible_date_time.day'
