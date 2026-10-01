@@ -1,0 +1,45 @@
+---
+  - name: Install webserver on fedora & rhel  machines
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+      mypackage: httpd
+      data: |
+          1. We have to work closely on this
+          2. why are we not studying as per requirement
+          3. our hardwork is not sufficient to defeat anyone in ansible world
+    tasks:
+      - name: Install {{ mypackage }}
+        ansible.builtin.package:
+          name: "{{ mypackage }}"
+          state: present
+      - name: start and enable service
+        ansible.builtin.service:
+          name: "{{ mypackage }}"
+          state: started
+          enabled: yes
+      - name: create a file inside the dir index.html
+        ansible.builtin.file:
+          state: touch
+          path: /var/www/html/index.html
+      - name: add content into newly created index.html
+        ansible.builtin.copy:
+          content: "{{ data }}"
+          dest: /var/www/html/index.html
+        notify: restart_httpd
+      - name: run handlers now using meta module
+        ansible.builtin.meta: flush_handlers
+      - name: check content of the file
+        ansible.builtin.slurp:
+          src: /var/www/html/index.html
+        register: result
+      - name: print the content of the file
+        ansible.builtin.debug:
+          msg: "{{ result.content | b64decode }}"
+    handlers:
+      - name: restart_httpd
+        ansible.builtin.service:
+          name: "{{ mypackage }}"
+          state: restarted
+

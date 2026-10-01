@@ -1,0 +1,16 @@
+---
+  - name: create multiple user using the loop module 
+    hosts: all
+    become: true
+    vars:
+      myuser:
+        - goutham
+        - priyanka
+        - swaraj
+        - radhika
+    tasks:
+      - name: create multiple user on all the hosts
+        ansible.builtin.user:
+          name: "{{ item }}"
+          state: absent
+        loop: "{{ myuser }}"

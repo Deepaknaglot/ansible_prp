@@ -1,0 +1,12 @@
+---
+  - name: Installing nmap on all machines
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+      mypackage: nmap
+    tasks:
+      - name: installing {{ mypackage }} on all servers
+        ansible.builtin.package:
+          name: "{{ mypackage }}"
+          state: latest

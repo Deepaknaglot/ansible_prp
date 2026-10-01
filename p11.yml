@@ -1,0 +1,12 @@
+---
+  - name: gathering system facts and it's correspnding variables
+    hosts: all
+    become: true
+    tasks:
+      - name: print hostname of the machine
+        ansible.builtin.debug:
+          msg: my hostname is {{ ansible_hostname }}
+      
+      - name: my ip address details
+        ansible.builtin.debug:
+          msg: my ip address is {{ ansible_all_ipv4_addresses }}

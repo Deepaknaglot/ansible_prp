@@ -1,0 +1,20 @@
+---
+  - name: copy demo
+    hosts: all
+    gather_facts: false
+    become: true
+    vars:
+       myfile: ranveer
+       yourfile: tanmay
+    tasks:
+      - name: copy the favourite file 
+        ansible.builtin.copy:
+          src: /home/student/Ansible/{{ myfile }}
+          dest: /home/student/{{ yourfile }}
+      - name: confirm file is copied or not successfully
+        ansible.builtin.command:
+          cmd: ls -lrt  /home/student/{{ myfile }}
+        register: result
+      - name: print the file confirmation result
+        ansible.builtin.debug:
+          var: result.stdout

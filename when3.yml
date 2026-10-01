@@ -1,0 +1,32 @@
+---
+  - name: copy command demo
+    hosts: all
+    become: true
+    vars:
+      myfile: file1
+    tasks:
+      
+      - name: create a file in the home  dir
+        ansible.builtin.file:
+          state: touch
+          path: /home/student/{{ myfile }}
+        notify: add_content
+
+      - name: run handlers immdiately
+        ansible.builtin.meta: flush_handlers
+     
+      - name: view the content of the file
+        ansible.builtin.command:
+          cmd: cat /home/student/{{ myfile }}
+        register: data
+
+      - name: let's print the value of register variable
+        ansible.builtin.debug:
+          msg: content is "{{ data.stdout }}"
+    
+    handlers:
+       
+      - name: add_content
+        ansible.builtin.copy:
+          content: bye
+          dest: /home/student/{{ myfile }}

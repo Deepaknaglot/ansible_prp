@@ -1,0 +1,16 @@
+---
+  - name: when demo 7
+    hosts: all
+    become: true 
+    tasks:
+      - name: lets print the vaues using loop and when condition
+        ansible.builtin.debug:
+          var:  "{{ item }}"
+        loop:
+          - 0
+          - 4
+          - 6
+          - 7
+          - 9
+          - -9
+        when: item >5

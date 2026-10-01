@@ -1,0 +1,14 @@
+---
+  - name: create a user account 
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+     myuser: albert
+    tasks:
+      - name: create this user on all the required hosts
+        ansible.builtin.user:
+          name: "{{ myuser }}"
+          state: present
+          group: wheel
+          uid: 1777

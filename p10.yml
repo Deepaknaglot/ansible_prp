@@ -1,0 +1,16 @@
+---
+  - name: copying content again to verify the usage of pipe
+    become: true
+    hosts: all
+    gather_facts: false
+    tasks:
+      - name: add below content to the file and confirm back
+        ansible.builtin.copy:
+          content: |
+                 This is not your
+                 This is not mine
+                 This is her
+                 who is this
+                 who owns this
+          dest: /home/student/tanmay
+

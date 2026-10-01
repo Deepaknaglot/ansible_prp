@@ -1,0 +1,13 @@
+---
+  - name: removing any packages from all managed nodes
+    hosts: all
+    gather_facts: false
+    become: true
+    vars:
+      mypackage: httpd
+    tasks:
+      - name: removing {{ mypackage }} from all machine
+        ansible.builtin.dnf:
+          name: "{{ mypackage }}"
+          state: absent
+

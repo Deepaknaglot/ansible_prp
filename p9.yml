@@ -1,0 +1,17 @@
+---
+  - name: copying content to the file
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+      body: |
+            1.This is fine
+            2.This is not fine
+            3.This is third line
+            4.This is fourth line
+            5.This is fifth line
+    tasks:
+      - name: add content into the existing file using copy module
+        ansible.builtin.copy:
+          content: "{{ body }}"
+          dest: /home/student/ranveer

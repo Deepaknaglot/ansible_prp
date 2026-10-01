@@ -1,0 +1,9 @@
+---
+  - name: chec uptime of all hosts
+    hosts: all
+    become: true
+    gather_facts: true
+    tasks:
+      - name: printing uptime of each server
+        ansible.builtin.debug:
+                var: ansible_uptime_seconds 

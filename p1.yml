@@ -1,0 +1,8 @@
+---
+  - name: ping all hosts
+    hosts: all
+    become: yes
+    tasks:
+      - name:  use ping module to check the connectivity with all the hosts
+        ansible.builtin.ping:
+  

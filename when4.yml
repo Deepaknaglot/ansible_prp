@@ -1,0 +1,13 @@
+---
+  - name: when demo variable
+    hosts: all
+    become: true
+    tasks:
+      - name: read the content of the file
+        ansible.builtin.command:
+          cmd: cat /home/student/file1
+        register: result
+      - name: use variable in conditional statement
+        ansible.builtin.debug:
+          var: result.stdout
+        when: result.stdout.find('hi') != -1

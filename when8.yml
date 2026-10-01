@@ -1,0 +1,43 @@
+---
+  - name: when demo 8
+    hosts: all
+    become: true 
+    vars:
+      services:
+        - name: httpd
+          state: started
+        - name: firewalld
+          state: started
+        - name: vsftpd
+          state: stopped
+        - name: autofs
+          state: started
+        - name: postfix
+          state: stopped
+    tasks:
+      - name: install all above mentioned services
+        ansible.builtin.dnf:
+          name: "{{ item.name }}"
+          state: present
+        loop: "{{ services }}"
+      - name: start and enable services
+        ansible.builtin.service:
+          name: "{{ item.name }}"
+          state: started
+          enabled: yes
+        loop: "{{ services }}"
+        when: item.state == "started"
+      - name: stopp and disable services
+        ansible.builtin.service:
+          name: "{{ item.name }}"
+          state: stopped
+          enabled: false
+        loop: "{{ services }}"
+        when: 
+          - item.state == "stopped"
+            #  - item.name in ["vsftpd", "postfix"]
+
+      - name: Display service details
+        ansible.builtin.debug:
+          msg: "Service {{ item.name }}  has desired state {{ item.state }}"
+        loop: "{{ services }}"

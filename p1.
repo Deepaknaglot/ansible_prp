@@ -1,0 +1,7 @@
+---
+- name: check connectivity of all the hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: use ping command to check connectivity with all the managed nodes
+      ansible.builtin.ping:

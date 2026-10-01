@@ -1,0 +1,23 @@
+---
+  - name: file demo
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+      myfile: demofile
+    tasks:
+      - name: please create a {{ myfile }} inside your favourite dir
+        ansible.builtin.file:
+          state: touch
+          path: /home/student/{{ myfile }}
+          owner: student
+          group: student
+          mode: '1777'
+      - name: confirm file is created or not
+        ansible.builtin.command:
+          cmd: ls -lrth /home/student/{{ myfile }}
+        register: data
+      - name: print the data stored in the register variable so we can read
+        ansible.builtin.debug:
+          var: data.stdout
+#          msg: file is {{ data }}

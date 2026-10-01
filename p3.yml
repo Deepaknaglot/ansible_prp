@@ -1,0 +1,13 @@
+---
+  - name: start and enable httpd service on all the nodes
+    hosts: all
+    become: true 
+    gather_facts: false
+    vars:
+      mypackage: httpd
+    tasks:
+      - name: enable and start {{ mypackage }} service on all the hosts
+        ansible.builtin.service:
+          name: "{{ mypackage }}"
+          state: started
+          enabled: yes

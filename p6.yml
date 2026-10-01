@@ -1,0 +1,20 @@
+---
+  - name: create a directory demo
+    hosts: all
+    become: true
+    gather_facts: false
+    vars:
+      mydir: storage
+    tasks:
+      - name: create a dir using the file module
+        ansible.builtin.file:
+          state: directory
+          path: /home/student/{{ mydir }}
+          mode: '0755'
+      - name: confirm directory is created or not
+        ansible.builtin.command:
+          cmd: ls -ld /home/student/{{ mydir }}
+        register: data
+      - name: print the stored data from the register variable
+        ansible.builtin.debug:
+          msg: "{{ data.stdout }}"

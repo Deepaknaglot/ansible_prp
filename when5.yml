@@ -1,0 +1,11 @@
+---
+  - name: when demo 6
+    hosts: all
+    become: true 
+    vars:
+      user1: 7
+    tasks:
+      - name: let's print the loop value
+        ansible.builtin.command: echo {{ item }}
+        loop: [0,1,2,3,4,5,6,7,8,9]
+        when: item > 5
