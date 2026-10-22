@@ -1,0 +1,17 @@
+---
+- name: display facts 3
+  hosts: servera
+  become: true
+  tasks:
+    - name: define cutom variable
+      ansible.builtin.set_fact:
+        custom: "{{ ansible_facts['ansible_local']['custom']['general'] }}"
+    - name: install the mentioned package
+      ansible.builtin.dnf:
+        name: "{{ custom['package'] }}"
+        state: latest
+    - name: start, enable and check status of the service
+      ansible.builtin.service:
+        name: "{{ custom['service'] }}"
+        state: "{{ custom['state'] }}"
+        enabled: "{{ custom['enabled'] }}"

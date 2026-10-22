@@ -1,0 +1,19 @@
+--- 
+- name: stopping httpd and apache service step by step
+  hosts: all
+  become: true
+  vars:
+    mypkg:
+      - httpd
+      - apache2
+  tasks:
+    - name: stop the running service for apache2 and httpd
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: stopped
+      loop: "{{ mypkg }}"
+    - name: Uninstall the httpd packkage
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: absent
+      loop: "{{ mypkg }}"

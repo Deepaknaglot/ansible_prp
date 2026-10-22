@@ -1,0 +1,30 @@
+---
+- name: apache installation
+  hosts: all
+  become: true
+  vars:
+    pkg1: httpd
+    pkg2: apache2
+
+  tasks:
+    - name: installa the 
+      ansible.builtin.dnf:
+        name: "{{ pkg1 }}"       
+        state: latest
+      when: ansible_distribution == "RedHat"
+      register: install_result1
+    - name: install teh 
+      ansible.builtin.apt:
+        name: "{{ pkg2 }}"
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+    - name: enable the apache service
+      ansible.builtin.service:
+        name: "{{ pkg1 }}"
+        state: started
+      when: ansible_distribution == "RedHat"
+    - name: enable apache service on Ubuntu
+      ansible.builtin.service:
+        name: "{{ pkg2 }}"
+        state: started
+      when: ansible_distribution == "Ubuntu"

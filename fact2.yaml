@@ -1,0 +1,18 @@
+---
+  - name: storing facts data locally to get the report later also as part of study
+    hosts: all
+    become: true
+    tasks:
+      - name: creating the directory and fact/file details
+        ansible.builtin.file:
+          path: "/tmp/facts/{{ inventory_hostname }}"
+          state: directory
+          mode: '0755'
+        delegate_to: localhost
+
+      - name: adding contenet of the ansible facts into the file
+        ansible.builtin.copy:
+          content: "{{ ansible_facts | to_nice_json }}"
+          dest: "/tmp/facts/{{ inventory_hostname }}/facts.json"
+          mode: '0644'
+        delegate_to: localhost

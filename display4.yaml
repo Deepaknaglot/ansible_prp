@@ -1,0 +1,13 @@
+---
+- name: disply4 demo
+  hosts: all
+  become: true
+  tasks:
+    - name: confirmation of httpd service
+      ansible.builtin.command:
+        cmd: "systemctl status httpd"
+      register: result
+      changed_when: false
+    - name: print the result value
+      ansible.builtin.debug:
+        var: result

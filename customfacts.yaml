@@ -1,0 +1,40 @@
+---
+- name: custom facts demo
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: create a custom fact directory on all the hosts
+      ansible.builtin.file:
+        path: /etc/ansible/facts.d
+        state: directory
+        owner: root
+        group:
+        mode: '0755'
+    - name: create a custom file inside all the managed nodes to we can have custom facts
+      ansible.builtin.copy:
+        dest: /etc/ansible/facts.d/company.fact
+        mode: '0644'
+        owner: root
+        group: root
+        content: |
+          [general]
+          Company=Reckitt
+          environment={{  'development' if inventory_hostname == 'serverb' and 'quality' if inventory_hostname == 'servera' else 'qa' }}
+          app_port=8080
+    - name: Reload custom facts
+      ansible.builtin.setup:
+        filter:
+          - ansible_local
+    - name: Display all custom facts
+      ansible.builtin.debug:
+        msg: "Company: {{ ansible_local.company.general.company }}"
+    - name: Dispplay the environment
+      ansible.builtin.debug:
+        msg: "Environment: {{ ansible_local.company.general.environment }}"
+    - name: Display application port 
+      ansible.builtin.debug:
+        msg: "Application port: {{ ansible_local.company.general.app_port }}"
+
+
+

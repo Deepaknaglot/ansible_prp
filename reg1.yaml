@@ -1,0 +1,26 @@
+---
+- name: reg1 demo
+  hosts: all
+  become: true
+  vars:
+    pkg1: httpd
+    pkg2: apache2
+
+  tasks:
+    - name: installa the 
+      ansible.builtin.dnf:
+        name: "{{ pkg1 }}"       
+        state: latest
+      when: ansible_distribution == "RedHat"
+      register: install_result1
+    - name: install teh 
+      ansible.builtin.apt:
+        name: "{{ pkg2 }}"
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+      register: install_result2
+    - name: let's print the value
+      ansible.builtin.debug:
+        msg:
+          - "{{ install_result1 }}"
+          - "{{ install_result2 }}"

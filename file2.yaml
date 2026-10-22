@@ -1,0 +1,13 @@
+---
+  - name: print file2
+    hosts: all
+    become: true
+    gather_facts: false
+    tasks:
+      - name: print from file2
+        ansible.builtin.debug:
+          msg: "This is file2"
+      - name: print the content from file2
+        ansible.builtin.include_tasks:
+          file: file1.yaml
+          

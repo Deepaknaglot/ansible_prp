@@ -1,0 +1,4 @@
+    - name: print from file
+      ansible.builtin.debug:
+        msg: "This is file1"
+        

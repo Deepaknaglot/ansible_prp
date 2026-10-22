@@ -1,0 +1,14 @@
+---
+- name: changed_when demo
+  hosts: localhost
+  become: true
+  gather_facts: false
+  tasks:
+    - name: just check the changed_when status
+      ansible.builtin.command:
+        cmd: cat /tmp/deepak
+      register: update_result
+      changed_when: "'deepak' in update_result.stdout"
+    - name: print the value of the changed_when keyword
+      ansible.builtin.debug:
+        var: update_result

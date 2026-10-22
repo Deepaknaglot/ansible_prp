@@ -1,0 +1,8 @@
+ansible-navigator.log
+*.retry
+*-artifact-*.json
+pass.txt
+.vault_pass
+vault-password
+.env
+__pycache__/
